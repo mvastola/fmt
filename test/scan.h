@@ -189,12 +189,12 @@ class file_scan_buffer final : public scan_buffer {
  public:
   explicit file_scan_buffer(FILE* f)
       : scan_buffer(nullptr, nullptr, false), file_(f) {
-    flockfile(f);
+    fmt_flockfile(f);
     fill();
   }
   ~file_scan_buffer() {
     FILE* f = file_;
-    funlockfile(f);
+    fmt_funlockfile(f);
   }
 };
 }  // namespace detail
